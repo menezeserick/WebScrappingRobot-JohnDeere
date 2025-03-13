@@ -31,14 +31,12 @@ class DealerLocatorApp:
 
         self.style = ttk.Style(self.root)
         self.style.theme_use('clam')
-        # Configuração do estilo para o cabeçalho sem bordas e com centralização
         self.style.configure('Header.TLabel',
                              font=('Helvetica', 18, 'bold'),
                              foreground='#333333',
                              anchor='center',
                              relief='flat',
                              borderwidth=0)
-        # Configuração do estilo para o status (processamento) sem bordas e com centralização
         self.style.configure('Status.TLabel',
                              font=('Helvetica', 10),
                              foreground='#555555',
@@ -1294,7 +1292,6 @@ class DealerLocatorApp:
                     unique_entries.add(entry_key)
                     writer.writerow([dealer_name, endereco1, endereco2])
 
-        # Prepara a busca para a próxima cidade
         entrada = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//input[@id='google-page-level-search3']"))
         )
@@ -1306,7 +1303,6 @@ class DealerLocatorApp:
         )
         submit.click()
 
-        # Se não houver informações, tenta novamente
         attempts = 0
         max_attempts = 3
         while attempts < max_attempts:
